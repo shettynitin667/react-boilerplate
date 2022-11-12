@@ -5,6 +5,16 @@ module.exports = {
   entry: path.resolve(__dirname, '..', './src/index.tsx'),
   resolve: {
     extensions: ['.tsx', '.ts', '.js', 'scss'],
+    alias: {
+      '@': path.resolve(__dirname, '..', './src'),
+      utils: path.resolve(__dirname, '..', './src/utils'),
+      components: path.resolve(__dirname, '..', './src/components'),
+      views: path.resolve(__dirname, '..', './src/views'),
+      assets: path.resolve(__dirname, '..', './src/assets'),
+      store: path.resolve(__dirname, '..', './src/store'),
+      router: path.resolve(__dirname, '..', './src/router'),
+      services: path.resolve(__dirname, '..', './src/services'),
+    },
   },
   module: {
     rules: [
@@ -38,10 +48,6 @@ module.exports = {
         type: 'asset/inline',
       },
     ],
-  },
-  output: {
-    path: path.resolve(__dirname, '..', './build'),
-    filename: 'bundle.js',
   },
   plugins: [
     new HtmlWebpackPlugin({

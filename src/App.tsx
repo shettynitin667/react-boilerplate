@@ -1,31 +1,33 @@
-import classes from './styles.module.scss'
-import reactPng from './assets/React-icon.png'
-import { useCallback, useState } from 'react'
-import { randomInteger } from '../utils/helpers'
+// ################## Node Modules ##################
+import { useEffect } from 'react'
+import { Provider } from 'react-redux'
+import { PersistGate } from 'redux-persist/integration/react'
+
+// ################## Node Modules ##################
+
+// ################## Styles and Images ##################
+import './index.scss'
+// ################## Styles and Images ##################
+
+// ################## Components and Helpers ##################
+import API from 'services'
+import ApplicationRouter from 'router'
+import store, { persistedState } from './store'
+// ################## Components and Helpers ##################
 
 const App = () => {
-  const [appBackground, setAppBackground] = useState('rgb(255,255,255)')
-
-  const generateColor = () => {
-    const r = randomInteger(0, 255)
-    const g = randomInteger(0, 255)
-    const b = randomInteger(0, 255)
-    const newColor = `rgb(${r},${g},${b})`
-    setAppBackground(newColor)
-  }
-
-  const handleButtonClick = useCallback(() => {
-    generateColor()
+  useEffect(() => {
+    // create API Singleton instance
+    ;(() => new API())()
   }, [])
-
   return (
-    <div className={classes.app} style={{ background: appBackground }}>
-      <h1>React Boilerplate</h1>
-      <img className={classes.reactIcon} src={reactPng} alt="React icon" />
-      <button className={classes.changeButton} onClick={handleButtonClick}>
-        Change
-      </button>
-    </div>
+    <>
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistedState}>
+          <ApplicationRouter />
+        </PersistGate>
+      </Provider>
+    </>
   )
 }
 
