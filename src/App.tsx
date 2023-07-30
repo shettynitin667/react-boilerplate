@@ -19,6 +19,7 @@ const App = () => {
   useEffect(() => {
     // create API Singleton instance
     ;(() => new API())()
+    localStorage.setItem('token', 'DUMMY_TOKEN')
   }, [])
   return (
     <>

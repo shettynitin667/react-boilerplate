@@ -1,5 +1,6 @@
 const BundleAnalyzerPlugin =
   require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const path = require('path')
 
 module.exports = {
   mode: 'production',
@@ -8,5 +9,6 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, '..', './build'),
     filename: '[name].[contenthash].js',
+    clean: true,
   },
 }

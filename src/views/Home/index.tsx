@@ -1,6 +1,8 @@
 import { useAppDispatch, useAppSelector } from 'utils/hooks'
 import { useEffect } from 'react'
 import { actions as userAction } from 'store/users'
+import { Link } from 'react-router-dom'
+import { ABOUT } from 'router/routes'
 const Home = () => {
   const dispatch = useAppDispatch()
   const users = useAppSelector((state) => state.users.data)
@@ -15,6 +17,7 @@ const Home = () => {
           <li key={user.id}>{user.name}</li>
         ))}
       </ul>
+      <Link to={ABOUT}>About </Link>
     </>
   )
   // return <div>Home</div>

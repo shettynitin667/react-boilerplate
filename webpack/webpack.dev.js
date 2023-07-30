@@ -1,4 +1,3 @@
-const webpack = require('webpack')
 const path = require('path')
 const RefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 
@@ -15,11 +14,5 @@ module.exports = {
     path: path.resolve(__dirname, '..', './build'),
     filename: 'main.js',
   },
-  plugins: [
-    // new ReactRefreshWebpackPlugin(),
-    new webpack.DefinePlugin({
-      'process.env.name': JSON.stringify('React Boilerplate'), // Define env variables
-    }),
-    new RefreshWebpackPlugin(),
-  ],
+  plugins: [new RefreshWebpackPlugin()],
 }

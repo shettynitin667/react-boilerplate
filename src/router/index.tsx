@@ -14,7 +14,7 @@ interface ROUTE_TYPE {
   needAuth: boolean
 }
 
-const isAuthenticated = () => false
+const isAuthenticated = () => localStorage.getItem('token')
 
 const getRoute = ({ Page, path, needAuth }: ROUTE_TYPE) => {
   if (needAuth) {

@@ -1,7 +1,5 @@
 import axios, { AxiosInstance, AxiosRequestConfig } from 'axios'
-
-// const API_BASE_URL = process.env.REACT_APP_API_BASE_URL
-const API_BASE_URL = 'https://jsonplaceholder.typicode.com'
+import { API_BASE_URL } from './consts'
 
 const axiosConfig = {
   baseURL: API_BASE_URL,
